@@ -1,5 +1,6 @@
 package com.example.doorstep.loginSignup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,16 @@ public class SignupTabFragment extends Fragment {
         phone = root.findViewById(R.id.et_phone_number);
         confpass = root.findViewById(R.id.et_Confirm_password);
         signup = root.findViewById(R.id.btn_sign_up);
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), VerifyOtpActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
         return root;
     }
 }
