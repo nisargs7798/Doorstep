@@ -2,10 +2,12 @@
     <string name="app_name">Doorstep</string>
 
 
-
-
     //OTP screen
     <string name="otp_code_text">Co\nde</string>
     <string name="otp_verification">verification</string>
     <string name="otp_description">Enter OTP Sent to you phone</string>
+
+
+
+    <string name="home_title">Discover \nCleaning Services</string>
 </resources>
