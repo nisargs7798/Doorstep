@@ -31,9 +31,14 @@ public class SignupTabFragment extends Fragment {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), VerifyOtpActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+
+//                if(!(phone.getText().toString().isEmpty() || phone.getText().toString().length() != 10 )) {
+                    Intent intent = new Intent(getActivity(), VerifyOtpActivity.class);
+                    intent.putExtra("phone", phone.getText().toString());
+                    startActivity(intent);
+                    getActivity().finish();
+//                }
+
             }
         });
 

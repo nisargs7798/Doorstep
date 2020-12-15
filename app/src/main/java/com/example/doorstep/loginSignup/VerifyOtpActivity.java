@@ -6,13 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
+import com.chaos.view.PinView;
 import com.example.doorstep.Home.HomeActivity;
 import com.example.doorstep.R;
 
 public class VerifyOtpActivity extends AppCompatActivity {
 
     Button btnVerify;
+    PinView pinView;
+    private String mVerificationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
