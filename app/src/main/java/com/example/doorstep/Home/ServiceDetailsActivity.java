@@ -2,7 +2,10 @@ package com.example.doorstep.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 
@@ -12,6 +15,7 @@ public class ServiceDetailsActivity extends AppCompatActivity {
 
     NumberPicker numberPicker;
     RadioButton rbyes,rbno;
+    Button btnnext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +25,7 @@ public class ServiceDetailsActivity extends AppCompatActivity {
         numberPicker = findViewById(R.id.qty_number_picker);
         rbyes = findViewById(R.id.rb_yes);
         rbno = findViewById(R.id.rb_no);
-
+        btnnext = findViewById(R.id.btn_next_date);
 
 
         numberPicker.setMinValue(1);
@@ -29,7 +33,13 @@ public class ServiceDetailsActivity extends AppCompatActivity {
         numberPicker.setValue(5);
 
 
-
+        btnnext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceDetailsActivity.this, ChooseDateTimeActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
