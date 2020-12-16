@@ -1,5 +1,6 @@
 package com.example.doorstep.loginSignup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.doorstep.Home.HomeActivity;
 import com.example.doorstep.R;
 
 public class LoginTabFragment extends Fragment {
@@ -27,6 +29,14 @@ public class LoginTabFragment extends Fragment {
         forgotpass = root.findViewById(R.id.tv_fgpass);
         login = root.findViewById(R.id.btnLogin);
 
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         return root;
     }
 }
