@@ -18,11 +18,13 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
 
     List<String> titles;
     List<Integer> images;
+    private onServiceListener mOnserviceListener;
 
     LayoutInflater inflater;
-    public ServicesAdapter(Context ctx, List<String> titles, List<Integer> images) {
+    public ServicesAdapter(Context ctx, List<String> titles, List<Integer> images, onServiceListener onServiceListener) {
         this.titles = titles;
         this.images = images;
+        this.mOnserviceListener = onServiceListener;
         this.inflater = LayoutInflater.from(ctx);
     }
 
@@ -32,7 +34,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
 
         View view = inflater.inflate(R.layout.custom_services_layout, parent, false);
 
-        return new ViewHolder(view);
+        return new ViewHolder(view, mOnserviceListener);
     }
 
     @Override
@@ -46,14 +48,25 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         return titles.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
         ImageView image;
+        onServiceListener onServiceListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, onServiceListener onServiceListener) {
             super(itemView);
             image = itemView.findViewById(R.id.img_service_img);
             title = itemView.findViewById(R.id.txt_service_title);
+            this.onServiceListener = onServiceListener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onServiceListener.onServiceClicked(getAdapterPosition());
+        }
+    }
+    public interface onServiceListener{
+        void onServiceClicked(int position);
     }
 }

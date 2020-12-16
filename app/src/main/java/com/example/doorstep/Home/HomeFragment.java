@@ -1,5 +1,6 @@
 package com.example.doorstep.Home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import com.example.doorstep.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ServicesAdapter.onServiceListener{
 
         RecyclerView serviceList;
 
@@ -36,18 +37,18 @@ public class HomeFragment extends Fragment {
         titles = new ArrayList<>();
         images = new ArrayList<>();
 
-        titles.add("one");
-        titles.add("two");
-        titles.add("three");
-        titles.add("four");
-        titles.add("five");
-        titles.add("six");
-        titles.add("seven");
-        titles.add("eight");
-        titles.add("nine");
+        titles.add("Office cleaning");
+        titles.add("Home Cleaning");
+        titles.add("Plumbing");
+        titles.add("Electrical");
+        titles.add("Carpenter");
+        titles.add("Vehicle cleaning");
+        titles.add("Lawn");
+        titles.add("Snow Removal");
+        titles.add("Home renovation");
 
         images.add(R.drawable.ic_baseline_delete_sweep_24);
-        images.add(R.drawable.ic_baseline_room_service_24);
+        images.add(R.drawable.ic_baseline_home_24);
         images.add(R.drawable.ic_baseline_home_24);
         images.add(R.drawable.ic_baseline_delete_sweep_24);
         images.add(R.drawable.ic_baseline_room_service_24);
@@ -56,7 +57,7 @@ public class HomeFragment extends Fragment {
         images.add(R.drawable.ic_baseline_room_service_24);
         images.add(R.drawable.ic_baseline_home_24);
 
-        adapter = new ServicesAdapter(getActivity(), titles, images);
+        adapter = new ServicesAdapter(getActivity(), titles, images, this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         serviceList.setLayoutManager(gridLayoutManager);
         serviceList.setAdapter(adapter);
@@ -64,5 +65,12 @@ public class HomeFragment extends Fragment {
 
 
         return root;
+    }
+
+    @Override
+    public void onServiceClicked(int position) {
+        titles.get(position);
+        Intent intent = new Intent(getActivity(), ServiceDetailsActivity.class);
+        startActivity(intent);
     }
 }

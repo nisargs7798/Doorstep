@@ -56,7 +56,9 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#fece2f">
+                app:cardBackgroundColor="#FFB600"
+                app:cardCornerRadius="15dp"
+                android:elevation="50dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -97,7 +99,8 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#fece2f">
+                app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="#FFB600">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
