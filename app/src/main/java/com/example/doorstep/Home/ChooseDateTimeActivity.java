@@ -85,7 +85,6 @@ public class ChooseDateTimeActivity extends AppCompatActivity implements DatePic
 
         if (isStartTime == 0) {
             edstarttime.setText(time);
-
         } else {
             edendtime.setText(time);
 
