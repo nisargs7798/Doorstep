@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:layout_constraintHeight_percent=".3">
+    >
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="225dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -29,7 +29,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_service_title"
+                android:id="@+id/tv_book_service_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Lving Room service"
@@ -49,7 +49,7 @@
                     android:src="@drawable/ic_baseline_calendar_today_24"
                     />
                 <TextView
-                    android:id="@+id/tv_date"
+                    android:id="@+id/tv_book_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="date"
@@ -68,7 +68,7 @@
                     android:src="@drawable/ic_baseline_access_time_24"
                     />
                 <TextView
-                    android:id="@+id/tv_start_time"
+                    android:id="@+id/tv_book_start_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="start time"
@@ -81,7 +81,7 @@
                     android:layout_marginLeft="20dp"
                     android:textSize="20sp"/>
                 <TextView
-                    android:id="@+id/tv_end_time"
+                    android:id="@+id/tv_book_end_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="End time"
@@ -100,7 +100,25 @@
                     android:src="@drawable/ic_baseline_attach_money_24"
                     />
                 <TextView
-                    android:id="@+id/tv_price"
+                    android:id="@+id/tv_book_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="date"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_transfer_within_a_station_24"
+                    />
+                <TextView
+                    android:id="@+id/tv_book_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="date"

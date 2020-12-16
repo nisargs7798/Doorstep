@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.doorstep.Bookings.BookingsFragment;
 import com.example.doorstep.History.HistoryFragment;
 import com.example.doorstep.R;
 import com.example.doorstep.profile.ProfileTabFragment;
@@ -51,6 +52,9 @@ public class HomeActivity extends AppCompatActivity implements FragmentChangeLis
                     break;
                 case R.id.nav_history:
                     selectedFragment = new HistoryFragment();
+                    break;
+                case R.id.nav_booking:
+                    selectedFragment = new BookingsFragment();
                     break;
                 default:
                     selectedFragment = new HomeFragment();

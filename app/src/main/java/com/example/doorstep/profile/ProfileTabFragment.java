@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.doorstep.Bookings.BookingsFragment;
 import com.example.doorstep.History.HistoryFragment;
 import com.example.doorstep.Home.FragmentChangeListener;
 import com.example.doorstep.Home.HomeFragment;
@@ -71,7 +72,7 @@ public class ProfileTabFragment extends Fragment {
     }
 
     private void showBookingFragment() {
-        Fragment fr=new HomeFragment();
+        Fragment fr=new BookingsFragment();
         FragmentChangeListener fc=(FragmentChangeListener)getActivity();
         fc.replaceFragment(fr, "bookings");
     }
