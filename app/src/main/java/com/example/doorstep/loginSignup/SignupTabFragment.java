@@ -32,12 +32,12 @@ public class SignupTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-//                if(!(phone.getText().toString().isEmpty() || phone.getText().toString().length() != 10 )) {
+
                     Intent intent = new Intent(getActivity(), VerifyOtpActivity.class);
                     intent.putExtra("phone", phone.getText().toString());
+                    intent.putExtra("fromact", "signup");
                     startActivity(intent);
-                    getActivity().finish();
-//                }
+
 
             }
         });

@@ -29,6 +29,14 @@ public class LoginTabFragment extends Fragment {
         forgotpass = root.findViewById(R.id.tv_fgpass);
         login = root.findViewById(R.id.btnLogin);
 
+        forgotpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), VerifyOtpActivity.class);
+                intent.putExtra("from", "forgot_pass");
+                startActivity(intent);
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
