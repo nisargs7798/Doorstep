@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -29,20 +30,19 @@ public class LoginTabFragment extends Fragment {
         forgotpass = root.findViewById(R.id.tv_fgpass);
         login = root.findViewById(R.id.btnLogin);
 
-        forgotpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), VerifyOtpActivity.class);
-                intent.putExtra("from", "forgot_pass");
-                startActivity(intent);
-            }
-        });
+   
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                startActivity(intent);
+                
+                if (email.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+                    Intent intent = new Intent(getActivity(), HomeActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(getActivity(), "Incorrect credentials", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return root;
