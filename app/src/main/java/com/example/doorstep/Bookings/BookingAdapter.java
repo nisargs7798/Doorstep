@@ -22,7 +22,9 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     List<String> price;
     List<String> status;
     LayoutInflater inflater;
-    public BookingAdapter(Context ctx, List<String> titles, List<String> dates, List<String> startTime, List<String> endTime, List<String> price,List<String> status ) {
+    private onBookingsListener mOnBookingsListener;
+
+    public BookingAdapter(Context ctx, List<String> titles, List<String> dates, List<String> startTime, List<String> endTime, List<String> price, List<String> status, onBookingsListener onBookingsListener) {
         this.titles = titles;
         this.dates = dates;
         this.startTime = startTime;
@@ -30,6 +32,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         this.price = price;
         this.status = status;
         this.inflater = LayoutInflater.from(ctx);
+        this.mOnBookingsListener = onBookingsListener;
     }
 
 
@@ -38,7 +41,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     public BookingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.custom_bookings_layout, parent, false);
 
-        return new BookingAdapter.ViewHolder(view);
+        return new BookingAdapter.ViewHolder(view, mOnBookingsListener);
     }
 
     @Override
@@ -56,12 +59,13 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         return titles.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder  {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
         TextView title, date, startTime, endTime, price, status;
+        onBookingsListener onBookingsListener;
 
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, onBookingsListener onBookingsListener) {
             super(itemView);
             title = itemView.findViewById(R.id.tv_book_service_title);
             date = itemView.findViewById(R.id.tv_book_date);
@@ -69,6 +73,15 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             endTime = itemView.findViewById(R.id.tv_book_end_time);
             price = itemView.findViewById(R.id.tv_book_price);
             status = itemView.findViewById(R.id.tv_book_status);
+            this.onBookingsListener = onBookingsListener;
+            itemView.setOnClickListener(this);
         }
+        @Override
+        public void onClick(View v) {
+            onBookingsListener.onBookingsClicked(getAdapterPosition());
+        }
+    }
+    public interface onBookingsListener {
+        void onBookingsClicked(int position);
     }
 }

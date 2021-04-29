@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,11 +20,11 @@ import java.util.List;
 
 public class HomeFragment extends Fragment implements ServicesAdapter.onServiceListener{
 
-        RecyclerView serviceList;
+    RecyclerView serviceList;
 
     List<String> titles;
     List<Integer> images;
-
+    Bundle bundle;
     ServicesAdapter adapter;
 
     @Nullable
@@ -56,7 +57,7 @@ public class HomeFragment extends Fragment implements ServicesAdapter.onServiceL
         images.add(R.drawable.ic_baseline_delete_sweep_24);
         images.add(R.drawable.ic_baseline_room_service_24);
         images.add(R.drawable.ic_baseline_home_24);
-
+        bundle = new Bundle();
         adapter = new ServicesAdapter(getActivity(), titles, images, this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         serviceList.setLayoutManager(gridLayoutManager);
@@ -69,8 +70,9 @@ public class HomeFragment extends Fragment implements ServicesAdapter.onServiceL
 
     @Override
     public void onServiceClicked(int position) {
-        titles.get(position);
         Intent intent = new Intent(getActivity(), ServiceDetailsActivity.class);
+        bundle.putString("service_name", titles.get(position));
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

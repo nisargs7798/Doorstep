@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,14 @@ import com.example.doorstep.History.HistoryFragment;
 import com.example.doorstep.Home.FragmentChangeListener;
 import com.example.doorstep.Home.HomeFragment;
 import com.example.doorstep.R;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -31,6 +40,12 @@ public class ProfileTabFragment extends Fragment {
 
     ImageView profile;
     RelativeLayout bookings, history;
+    TextInputLayout name, email,phone,password;
+    TextView txtname, txtemail;
+    FirebaseUser user;
+    DocumentReference documentReference;
+    FirebaseFirestore fstore;
+    String uid;
 
     @Nullable
     @Override
@@ -39,6 +54,23 @@ public class ProfileTabFragment extends Fragment {
         profile = root.findViewById(R.id.img_profile_image);
         history = root.findViewById(R.id.layout_btn_history);
         bookings = root.findViewById(R.id.layout_btn_bookings);
+
+
+        name = root.findViewById(R.id.TIL_fullname);
+        email = root.findViewById(R.id.TIL_email);
+        phone = root.findViewById(R.id.TIL_phone);
+        password = root.findViewById(R.id.TIL_password);
+        txtname = root.findViewById(R.id.txt_user_name);
+        txtemail = root.findViewById(R.id.txt_user_email);
+
+
+
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        fstore = FirebaseFirestore.getInstance();
+        uid = user.getUid();
+
+        getUserData(uid);
 
         bookings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +101,21 @@ public class ProfileTabFragment extends Fragment {
 
 
         return root;
+    }
+
+    private void getUserData(String uid) {
+        documentReference = fstore.collection("users").document(uid);
+        documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                name.getEditText().setText(value.getString("name"));
+                txtname.setText(value.getString("name"));
+                txtemail.setText(value.getString("email"));
+                email.getEditText().setText(value.getString("email"));
+                phone.getEditText().setText(value.getString("phone"));
+                password.getEditText().setText(value.getString("password"));
+            }
+        });
     }
 
     private void showBookingFragment() {

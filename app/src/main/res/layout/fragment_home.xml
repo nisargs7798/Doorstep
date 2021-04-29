@@ -31,8 +31,6 @@
             app:iconifiedByDefault="false"
             android:background="@drawable/edittext_bg"
             >
-
-
         </androidx.appcompat.widget.SearchView>
 
 

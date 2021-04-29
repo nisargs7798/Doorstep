@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.doorstep.R;
 
@@ -21,6 +22,8 @@ public class ChooseDateTimeActivity extends AppCompatActivity implements DatePic
 
     EditText eddate, edstarttime, edendtime;
     int isStartTime, isEndTime;
+
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,10 @@ public class ChooseDateTimeActivity extends AppCompatActivity implements DatePic
         eddate = findViewById(R.id.ed_date);
         edstarttime = findViewById(R.id.ed_startTime);
         edendtime = findViewById(R.id.ed_endTime);
+
+        bundle = getIntent().getExtras();
+
+        Toast.makeText(this, bundle.getString("service_name"), Toast.LENGTH_SHORT).show();
 
     }
 

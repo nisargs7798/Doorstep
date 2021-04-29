@@ -16,6 +16,7 @@ public class ServiceDetailsActivity extends AppCompatActivity {
     NumberPicker numberPicker;
     RadioButton rbyes,rbno;
     Button btnnext;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class ServiceDetailsActivity extends AppCompatActivity {
         rbno = findViewById(R.id.rb_no);
         btnnext = findViewById(R.id.btn_next_date);
 
+        bundle = getIntent().getExtras();
 
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(10);
@@ -37,6 +39,7 @@ public class ServiceDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ServiceDetailsActivity.this, ChooseDateTimeActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

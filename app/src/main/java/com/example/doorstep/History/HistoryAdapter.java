@@ -24,13 +24,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     List<String> endTime;
     List<String> price;
     LayoutInflater inflater;
-    public HistoryAdapter(Context ctx, List<String> titles,List<String> dates,List<String> startTime, List<String> endTime,List<String> price ) {
+    private onHistoryListener monHistoryListener;
+
+
+    public HistoryAdapter(Context ctx, List<String> titles,List<String> dates,List<String> startTime, List<String> endTime,List<String> price, onHistoryListener onHistoryListener ) {
         this.titles = titles;
         this.dates = dates;
         this.startTime = startTime;
         this.endTime = endTime;
         this.price = price;
         this.inflater = LayoutInflater.from(ctx);
+        this.monHistoryListener = onHistoryListener;
     }
 
 
@@ -39,7 +43,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public HistoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.custom_history_layout, parent, false);
 
-        return new HistoryAdapter.ViewHolder(view);
+        return new HistoryAdapter.ViewHolder(view, monHistoryListener);
     }
 
     @Override
@@ -56,18 +60,29 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         return titles.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder  {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
         TextView title, date, startTime, endTime, price;
+        onHistoryListener onHistoryListener;
 
-
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, onHistoryListener onHistoryListener) {
             super(itemView);
             title = itemView.findViewById(R.id.tv_service_title);
             date = itemView.findViewById(R.id.tv_date);
             startTime = itemView.findViewById(R.id.tv_start_time);
             endTime = itemView.findViewById(R.id.tv_end_time);
             price = itemView.findViewById(R.id.tv_price);
+            this.onHistoryListener = onHistoryListener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onHistoryListener.onHistoryClicked(getAdapterPosition());
+
+        }
+    }
+    public interface onHistoryListener{
+        void onHistoryClicked(int position);
     }
 }

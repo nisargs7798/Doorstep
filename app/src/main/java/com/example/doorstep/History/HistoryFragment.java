@@ -1,10 +1,12 @@
 package com.example.doorstep.History;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,13 +14,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.doorstep.Bookings.OrderDetailsActivity;
 import com.example.doorstep.Home.ServicesAdapter;
 import com.example.doorstep.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends Fragment implements HistoryAdapter.onHistoryListener{
 
     RecyclerView rv_history;
 
@@ -28,6 +31,7 @@ public class HistoryFragment extends Fragment {
     List<String> endTime;
     List<String> price;
     HistoryAdapter adapter;
+    Bundle bundle;
 
     @Nullable
     @Override
@@ -64,11 +68,22 @@ public class HistoryFragment extends Fragment {
         price.add("300");
         price.add("400");
 
-        adapter = new HistoryAdapter(getActivity(), titles,dates,startTime,endTime,price);
+        adapter = new HistoryAdapter(getActivity(), titles,dates,startTime,endTime,price, this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         rv_history.setLayoutManager(gridLayoutManager);
         rv_history.setAdapter(adapter);
-
+        bundle = new Bundle();
         return root;
+    }
+
+    @Override
+    public void onHistoryClicked(int position) {
+        Toast.makeText(getActivity(), "clicked" + titles.get(position), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), ReviewActivity.class);
+        bundle.putString("service_name", titles.get(position));
+        bundle.putString("date", dates.get(position));
+//        bundle.putString("status", status.get(position));
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

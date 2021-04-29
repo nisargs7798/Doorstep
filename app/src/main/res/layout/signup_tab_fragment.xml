@@ -23,6 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.8" />
+
         <EditText
             android:id="@+id/et_LastName"
             android:layout_width="0dp"
@@ -62,7 +63,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/edittext_bg"
             android:hint="Phone number"
-
+            android:inputType="number"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -81,7 +82,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/edittext_bg"
             android:hint="password"
-
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -100,7 +101,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/edittext_bg"
             android:hint="Confirm password"
-
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"

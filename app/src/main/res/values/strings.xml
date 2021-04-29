@@ -9,4 +9,19 @@
 
 
     <string name="home_title">Discover \nCleaning Services</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="login">Login</string>
+    <string name="enter_phone_number">Phone Number</string>
+    <string name="enter_password">Password</string>
+    <string name="tag_line">Service Delivered at you Doorstep</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="forget_password">Forgot Passowrd?</string>
+    <string name="create_account">Create Account</string>
+    <string name="enter_full_name">Full Name</string>
+    <string name="enter_username">Username</string>
+    <string name="enter_email">Email</string>
+    <string name="err_msg_email">Email address is invalid</string>
+    <string name="err_msg_password">Invalid Password</string>
+    <string name="auth_failed">Invalid Credentials</string>
 </resources>

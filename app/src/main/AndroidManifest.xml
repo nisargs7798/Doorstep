@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,18 +12,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home.AddressActivity"></activity>
-        <activity android:name=".Home.ChooseDateTimeActivity" />
-        <activity android:name=".Home.ServiceDetailsActivity" />
-        <activity android:name=".Home.HomeActivity" />
-        <activity android:name=".loginSignup.VerifyOtpActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".History.ReviewActivity"></activity>
+        <activity android:name=".Bookings.OrderDetailsActivity" />
+        <activity android:name=".FileADisputeActivity" />
+        <activity android:name=".ThankYouActivity" />
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".loginSignup.RegisterActivity" />
+        <activity android:name=".loginSignup.LoginActivity" />
+        <activity android:name=".loginSignup.LoginSignupMainActivity" />
+        <activity android:name=".Home.AddressActivity" />
+        <activity android:name=".Home.ChooseDateTimeActivity" />
+        <activity android:name=".Home.ServiceDetailsActivity" />
+        <activity android:name=".Home.HomeActivity" />
+        <activity android:name=".loginSignup.VerifyOtpActivity" />
+        <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

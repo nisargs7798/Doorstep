@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "155963073872",
+    "firebase_url": "https://doorstep-2db9e-default-rtdb.firebaseio.com",
+    "project_id": "doorstep-2db9e",
+    "storage_bucket": "doorstep-2db9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155963073872:android:2a3f45babdfbae7090f855",
+        "android_client_info": {
+          "package_name": "com.example.doorstep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155963073872-qgac10pffdv5cicf5vi3pqq67279brk9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doorstep",
+            "certificate_hash": "5ffa16ff8e3d1732243a271fb5bcdb675f0cbaff"
+          }
+        },
+        {
+          "client_id": "155963073872-tqkofbqa6podg9evd7hin99026evqcdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZi7NYhnwLIBj49_uwv7Zu0uJtLTQ9OPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155963073872-tqkofbqa6podg9evd7hin99026evqcdk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

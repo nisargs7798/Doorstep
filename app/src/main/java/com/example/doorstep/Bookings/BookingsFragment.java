@@ -1,9 +1,11 @@
 package com.example.doorstep.Bookings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +18,7 @@ import com.example.doorstep.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookingsFragment extends Fragment {
+public class BookingsFragment extends Fragment implements BookingAdapter.onBookingsListener {
 
     RecyclerView rv_bookings;
 
@@ -27,6 +29,8 @@ public class BookingsFragment extends Fragment {
     List<String> price;
     List<String> status;
     BookingAdapter adapter;
+    Bundle bundle;
+
 
     @Nullable
     @Override
@@ -69,12 +73,24 @@ public class BookingsFragment extends Fragment {
         status.add("work in Progress");
         status.add("pending");
         status.add("Payment pending");
-
-        adapter = new BookingAdapter(getActivity(), titles,dates,startTime,endTime,price, status);
+        bundle = new Bundle();
+        adapter = new BookingAdapter(getActivity(), titles,dates,startTime,endTime,price, status, this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         rv_bookings.setLayoutManager(gridLayoutManager);
         rv_bookings.setAdapter(adapter);
 
         return root;
+    }
+
+
+    @Override
+    public void onBookingsClicked(int position) {
+        Toast.makeText(getActivity(), "clicked" + titles.get(position), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), OrderDetailsActivity.class);
+        bundle.putString("service_name", titles.get(position));
+        bundle.putString("date", dates.get(position));
+        bundle.putString("status", status.get(position));
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
