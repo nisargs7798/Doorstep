@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.doorstep.Home.HomeActivity;
 import com.example.doorstep.R;
+import com.example.doorstep.ThankYouActivity;
 
 public class ReviewActivity extends AppCompatActivity {
 
@@ -47,7 +48,7 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Intent intent = new Intent(ReviewActivity.this, HomeActivity.class);
+                Intent intent = new Intent(ReviewActivity.this, ThankYouActivity.class);
                 startActivity(intent);
             }
         });

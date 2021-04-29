@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_services"
+            android:icon="@drawable/ic_baseline_room_service_24"
+            android:title="Services" />
+
+        <item
+            android:id="@+id/nav_current_orders"
+            android:icon="@drawable/ic_baseline_filter_list_24"
+            android:title="Current Orders" />
+        <item
+            android:id="@+id/nav_History"
+            android:icon="@drawable/ic_baseline_history_24"
+            android:title="History" />
+
+
+    </group>
+
+    <item android:title="Profile">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_baseline_home_24"
+                    android:title="Your Profile" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_baseline_home_24"
+                    android:title="Logout" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="About">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_fileadispute"
+                android:icon="@drawable/ic_baseline_email_24"
+                android:title="Contact Us" />
+
+            <item
+                android:id="@+id/nav_aboutUs"
+                android:icon="@drawable/button_bg_profile"
+                android:title="About Us" />
+        </menu>
+    </item>
+</menu>
